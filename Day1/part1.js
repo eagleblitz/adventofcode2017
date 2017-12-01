@@ -5,14 +5,13 @@ fs.readFile('./input.txt', 'utf8', (err, input) => {
 
     let split = input.split('')
 
-    let prev = null;
+    let next = null;
     let out = 0;
 
-    for(i in split) {
-        if(prev && prev === split[i]) out += parseInt(split[i]), console.log(out)
-
-        prev = split[i]
+    for(var i = 0; i < input.length; i++) {
+        next = (i + 1) % split.length
+        if(split[next] == split[i]) out += Number(split[i])
     }
 
-    console.log(out + 4)
+    console.log(out)
 })
